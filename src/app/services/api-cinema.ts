@@ -28,6 +28,21 @@ export interface Screening {
   available_seats: number;
 }
 
+export interface BookingRequest {
+  first_name: string;
+  last_name: string;
+  email: string;
+}
+
+export interface Booking {
+  id: number;
+  screening_id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  created_at: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -44,11 +59,19 @@ export class ApiCinema {
     return this.http.get<Film>(`${this.baseUrl}/films/${id}`);
   }
 
+  getFilmScreenings(id: number): Observable<Screening[]> {
+    return this.http.get<Screening[]>(`${this.baseUrl}/films/${id}/screenings`);
+  }
+
   getScreenings(): Observable<Screening[]> {
     return this.http.get<Screening[]>(`${this.baseUrl}/screenings`);
   }
 
   getScreening(id: number): Observable<Screening> {
     return this.http.get<Screening>(`${this.baseUrl}/screenings/${id}`);
+  }
+
+  createBooking(screeningId: number, booking: BookingRequest): Observable<Booking> {
+    return this.http.post<Booking>(`${this.baseUrl}/screenings/${screeningId}/bookings`, booking);
   }
 }

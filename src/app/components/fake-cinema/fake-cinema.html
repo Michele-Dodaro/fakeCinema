@@ -7,7 +7,7 @@
             <h2 class="film-title">{{ film.title }}</h2>
             <p class="film-meta">{{ film.genre }} &middot; {{ film.duration }} min &middot; {{ film.year }}</p>
             <span class="film-rating">{{ film.rating }}</span>
-            <button class="film-cta">Scopri di più</button>
+            <a class="film-cta" [routerLink]="['/films', film.id]">Scopri di più</a>
         </div>
     </li>
 }

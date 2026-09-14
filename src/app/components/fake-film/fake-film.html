@@ -1,1 +1,66 @@
-<p>fake-film works!</p>
+@if (film(); as f) {
+<div class="film-detail">
+  <img src="{{ f.poster_url }}" alt="{{ f.title }} Poster">
+  <div class="film-detail-info">
+    <h1>{{ f.title }}</h1>
+    <p class="film-meta">{{ f.genre }} &middot; {{ f.duration }} min &middot; {{ f.year }} &middot; {{ f.rating }}</p>
+    <p class="film-director">Regia di {{ f.director }}</p>
+    <p class="film-description">{{ f.description }}</p>
+
+    @if (screenings().length) {
+    <ul class="screening-list">
+      @for (screening of screenings(); track screening.id) {
+      <li class="screening-item">
+        {{ screening.starts_at | date: 'dd/MM/yyyy HH:mm' }} &middot; {{ screening.hall.name }}
+        &middot; <strong>{{ screening.available_seats }}</strong> posti rimasti
+        <button type="button" class="btn-prenota" (click)="dialog.showModal()">Prenota</button>
+        <dialog #dialog class="reservation-dialog">
+          <h2 class="dialog-title">Prenota il tuo posto</h2>
+          <div class="form-group">
+            <label for="name-{{ screening.id }}">Nome:</label>
+            <input id="name-{{ screening.id }}" type="text" placeholder="Tuo nome" [(ngModel)]="name" name="name"
+              required />
+          </div>
+          <div class="form-group">
+            <label for="surname-{{ screening.id }}">Cognome:</label>
+            <input id="surname-{{ screening.id }}" type="text" placeholder="Tuo cognome" [(ngModel)]="surname"
+              name="surname" required />
+          </div>
+          <div class="form-group">
+            <label for="email-{{ screening.id }}">Email:</label>
+            <input id="email-{{ screening.id }}" type="email" placeholder="tua.email@example.com"
+              [(ngModel)]="email" name="email" required />
+          </div>
+
+          <div class="dialog-actions">
+            <button type="button" class="btn-invia" (click)="submitReservation(screening, dialog)">Invia</button>
+            <button type="button" class="btn-close" (click)="dialog.close()">Chiudi</button>
+          </div>
+        </dialog>
+      </li>
+      }
+    </ul>
+    }
+
+
+  </div>
+</div>
+
+@if (error(); as e) {
+<div class="result-overlay">
+  <div class="result-dialog">
+    <p class="error-message">Errore durante la prenotazione: {{ e }}</p>
+    <button type="button" class="btn-close" (click)="closeResult()">Chiudi</button>
+  </div>
+</div>
+} @else if (success()) {
+<div class="result-overlay">
+  <div class="result-dialog">
+    <p class="success-message">Prenotazione effettuata con successo!</p>
+    <button type="button" class="btn-close" (click)="closeResult()">Chiudi</button>
+  </div>
+</div>
+}
+} @else {
+<p>Caricamento film...</p>
+}

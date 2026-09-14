@@ -1,0 +1,210 @@
+:host {
+  --color-black: #000000;
+  --color-racing-red: #f12528;
+  --color-dark-wine: #771214;
+  --color-charcoal: #5e5e5e;
+
+  display: block;
+  min-height: 100vh;
+  background-color: var(--color-black);
+  color: #ffffff;
+  font-family: system-ui, sans-serif;
+  padding: 2rem;
+}
+
+.film-detail {
+  display: flex;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.film-detail img {
+  width: 280px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--color-charcoal);
+}
+
+.film-detail-info h1 {
+  margin-top: 0;
+  color: var(--color-racing-red);
+}
+
+.film-meta,
+.film-director {
+  color: var(--color-charcoal);
+  margin-bottom: 0.75rem;
+}
+
+.screening-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.screening-item {
+  padding: 0.5rem 0.85rem;
+  background-color: var(--color-dark-wine);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.screening-item strong {
+  color: var(--color-racing-red);
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.film-description {
+  line-height: 1.5;
+}
+
+.btn-prenota {
+  margin-left: 0.75rem;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-racing-red);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-prenota:hover {
+  background-color: var(--color-dark-wine);
+}
+
+.btn-prenota:active {
+  transform: scale(0.97);
+}
+
+.reservation-dialog {
+  border: 1px solid var(--color-charcoal);
+  border-radius: 10px;
+  padding: 1.5rem;
+  min-width: 320px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: system-ui, sans-serif;
+}
+
+.reservation-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+}
+
+.dialog-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--color-racing-red);
+  font-size: 1.1rem;
+}
+
+.reservation-dialog .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.reservation-dialog .form-group label {
+  font-size: 0.85rem;
+  color: var(--color-charcoal);
+}
+
+.reservation-dialog .form-group input {
+  padding: 0.5rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-charcoal);
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.reservation-dialog .form-group input:focus {
+  outline: none;
+  border-color: var(--color-racing-red);
+}
+
+.btn-invia {
+  padding: 0.5rem 1.1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-racing-red);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-invia:hover {
+  background-color: var(--color-dark-wine);
+}
+
+.btn-close {
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--color-charcoal);
+  border-radius: 6px;
+  background-color: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-close:hover {
+  background-color: var(--color-charcoal);
+}
+
+.error-message {
+  color: var(--color-racing-red);
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0;
+}
+
+.success-message {
+  color: #4caf50;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0;
+}
+
+.result-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+}
+
+.result-dialog {
+  min-width: 280px;
+  max-width: 360px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-charcoal);
+  background-color: #1a1a1a;
+  text-align: center;
+}
+
+.result-dialog .error-message,
+.result-dialog .success-message {
+  font-size: 1rem;
+  margin: 0 0 1rem;
+}
+
+.result-dialog .btn-close {
+  margin: 0 auto;
+}

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCinema, Film } from '../../services/api-cinema';
 import { signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-fake-cinema',
+  imports: [RouterLink],
   templateUrl: './fake-cinema.html',
   styleUrls: ['./fake-cinema.css']
 })

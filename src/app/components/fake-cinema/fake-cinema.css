@@ -46,6 +46,7 @@ ul,
   height: 300px;
   object-fit: cover;
   background-color: var(--color-charcoal);
+  transform: scale(1.08);
 }
 
 .film-info {
@@ -78,6 +79,7 @@ ul,
 
 .film-cta {
   display: block;
+  box-sizing: border-box;
   width: 100%;
   padding: 0.6rem;
   border: none;
@@ -85,6 +87,8 @@ ul,
   background-color: var(--color-racing-red);
   color: #ffffff;
   font-weight: bold;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
