@@ -1,0 +1,17 @@
+<h1 class="section-title">Film in programmazione</h1>
+<ul class="film-list">
+@for (film of films(); track film.id) {
+    <li class="film-card">
+        <img src="{{ film.poster_url }}" alt="{{ film.title }} Poster">
+        <div class="film-info">
+            <h2 class="film-title">{{ film.title }}</h2>
+            <p class="film-meta">{{ film.genre }} &middot; {{ film.duration }} min &middot; {{ film.year }}</p>
+            <span class="film-rating">{{ film.rating }}</span>
+            <button class="film-cta">Scopri di più</button>
+        </div>
+    </li>
+}
+@empty {
+    <li class="no-data">Nessun evento trovato nel database.</li>
+}
+</ul>

@@ -1,0 +1,102 @@
+:host {
+  --color-black: #000000;
+  --color-racing-red: #f12528;
+  --color-dark-wine: #771214;
+  --color-charcoal: #5e5e5e;
+
+  background-color: var(--color-black);
+  font-family: system-ui, sans-serif;
+}
+
+h1 {
+  color: var(--color-racing-red);
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 2rem;
+}
+
+ul,
+.film-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.film-card {
+  width: 220px;
+  background-color: var(--color-dark-wine);
+  border: 1px solid var(--color-charcoal);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.film-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-racing-red);
+}
+
+.film-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background-color: var(--color-charcoal);
+}
+
+.film-info {
+  padding: 0.85rem 1rem 1.25rem;
+  text-align: left;
+}
+
+.film-title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.film-meta {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.film-rating {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background-color: var(--color-black);
+  color: var(--color-racing-red);
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.film-cta {
+  display: block;
+  width: 100%;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-racing-red);
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.film-cta:hover {
+  background-color: var(--color-dark-wine);
+}
+
+.no-data {
+  width: 100%;
+  text-align: center;
+  color: var(--color-charcoal);
+  font-weight: bold;
+  padding: 2rem;
+}
