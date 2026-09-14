@@ -4,8 +4,11 @@
   --color-dark-wine: #771214;
   --color-charcoal: #5e5e5e;
 
+  box-sizing: border-box;
+  display: block;
   background-color: var(--color-black);
   font-family: system-ui, sans-serif;
+  padding: clamp(1rem, 3vw, 2.5rem);
 }
 
 h1 {
@@ -13,22 +16,24 @@ h1 {
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  margin-bottom: 2rem;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  margin-bottom: clamp(1.2rem, 2vw, 2rem);
 }
 
 ul,
 .film-list {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
   padding: 0;
   margin: 0;
 }
 
 .film-card {
-  width: 220px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   background-color: var(--color-dark-wine);
   border: 1px solid var(--color-charcoal);
   border-radius: 10px;
@@ -36,20 +41,25 @@ ul,
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.film-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-racing-red);
+@media (hover: hover) {
+  .film-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-racing-red);
+  }
 }
 
 .film-card img {
+  display: block;
   width: 100%;
-  height: 300px;
+  aspect-ratio: 2 / 3;
   object-fit: cover;
   background-color: var(--color-charcoal);
-  transform: scale(1.08);
 }
 
 .film-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   padding: 0.85rem 1rem 1.25rem;
   text-align: left;
 }
@@ -57,16 +67,19 @@ ul,
 .film-title {
   margin: 0 0 0.35rem;
   font-size: 1rem;
+  overflow-wrap: break-word;
   color: #ffffff;
 }
 
 .film-meta {
   margin: 0 0 0.6rem;
   font-size: 0.8rem;
-  color: white;
+  overflow-wrap: break-word;
+  color: #ffffff;
 }
 
 .film-rating {
+  align-self: flex-start;
   display: inline-block;
   margin-bottom: 0.85rem;
   padding: 0.15rem 0.5rem;
@@ -78,6 +91,7 @@ ul,
 }
 
 .film-cta {
+  margin-top: auto;
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -93,8 +107,10 @@ ul,
   transition: background-color 0.2s ease;
 }
 
-.film-cta:hover {
-  background-color: var(--color-dark-wine);
+@media (hover: hover) {
+  .film-cta:hover {
+    background-color: var(--color-dark-wine);
+  }
 }
 
 .no-data {
@@ -103,4 +119,16 @@ ul,
   color: var(--color-charcoal);
   font-weight: bold;
   padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .film-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .film-list {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
 }
