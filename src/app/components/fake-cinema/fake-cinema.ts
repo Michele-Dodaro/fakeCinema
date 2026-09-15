@@ -23,4 +23,29 @@ export class FakeCinema implements OnInit {
     });
     console.log(this.films());
   }
-} 
+    submitReservation(dialog: HTMLDialogElement): void {
+        dialog.showModal();
+    }
+  readonly isModalOpen = signal(false);
+  readonly Location = 'Via Roma 123, Milano';
+  readonly Contacts = 'Email: info@cinema.it | Tel: +39 02 1234 5678';
+  
+  openModal(): void {
+    this.isModalOpen.set(true);
+  }
+
+  closeModal(): void {
+    this.isModalOpen.set(false);
+  }
+
+  currentSlide = 0;
+  readonly totalSlides = 3;
+
+  nextSlide(): void {
+    this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+  }
+
+  prevSlide(): void {
+    this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+  }
+}
